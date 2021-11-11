@@ -1,0 +1,12 @@
+1;1;Roberto Baggio;1152546563;robertobaggio@gmail.com;Manuel Suárez 3751;no;20;Santa Fe;Rosario;S2002;M;05/01/2020;Encomienda;Urgente;Cerrada;10;0;2,1;12,1;si;no;;
+2;1;Carlos Tejedor;1185478596;carlostejedor@gmail.com;Bolívar 1147;no;1;CABA;San Telmo;C1066;M;28/01/2020;Encomienda;Normal;Cerrada;20;0;4,2;24,2;si;no;;
+3;1;Romina Calabrese;1174857485;rcalabrese@gmail.com;Rómulo Noya 1059;no;24;Buenos Aires;Zárate;B2800;M;05/02/2020;Encomienda;Normal;Cerrada;10;0;2,1;12,1;si;no;;
+4;2;Oscar Martínez;1178987414;oscarmartinez@gmail.com;Thames 380;si;1;CABA;Villa Crespo;C1414;M;15/12/2019;Correspondencia;Urgente;Cerrada;25;0;5,25;30,25;si;no;;
+5;2;Ricardo Darín;1196854785;darinr@gmail.com;Avelino Palacios 2464;si;24;Buenos Aires;Morón;B1712;M;01/01/2020;Correspondencia;Normal;Cerrada;20;0;4,2;24,2;si;no;;
+6;2;Pedro Alfonso;1189457845;peter.alfonso@gmail.com;Juan B. Justo 403;si;5;Córdoba;Villa Carlos Paz;X5152;M;01/03/2020;Correspondencia;Normal;Cerrada;30;0;6,3;36,3;si;no;;
+7;3;Carla Castrobarros;1165897845;castrobarros_carla@hotmail.com;Av. San Martín 1019;no;22;Tierra del Fuego;Ushuaia;V9410;S;25/11/2019;Encomienda;Urgente;Cerrada;40;0;8,4;48,4;no;no;;
+8;3;Jean Jaures;1178451235;jauresjean@hotmail.com;Brandsen 1156;si;8;Formosa;Formosa;P3600;N;04/03/2020;Correspondencia;Urgente;Cerrada;35;0;7,35;42,35;no;no;;
+9;3;Rita Soberana;1141745852;rsoberana@hotmail.com;Agustín Alvarez 533;si;12;Mendoza;Mendoza;M5500;M;16/05/2020;Correspondencia;Normal;Cerrada;21;0;4,41;25,41;si;no;;
+10;3;dasfsdf;sdf148;sdfsdf;sdfsdf;no;1;CABA;Agronomía;1425;M;29/10/2021 20:05:27;Correspondencia;Normal;Recibida;60;0;12,60;72,60;no;no;;
+11;1;romineitor;111;correo;direccion;no;4;Tierra del Fuego;Tolhuin;1425;S;29/10/2021 20:44:22;Correspondencia;Normal;Recibida;60;0;12,60;72,60;no;no;;
+12;2;razon social;11414764582;correo@gmail.com;direccion;no;3;San Luis;Villa Reynolds;4787;C;09/11/2021 0:00:00;Correspondencia;Urgente;Recibida;130;0;27,30;157,30;si;no;;

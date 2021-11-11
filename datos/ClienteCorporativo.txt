@@ -1,0 +1,3 @@
+1;20-80956154-8;CARLOS VILLARREAL;Carlos Calvo 4432;CABA;Almagro;C1230;1122334455;carlosvillarreal@gmail.com;;RI;2020-01-01;M
+2;30-87987789-8;RAMOS GENERALES S.R.L.;Av. San Martín 1975;Santa Cruz;Perito Moreno;Z9040;1147851425;administracion@ramosgeneralessrl.com;;RI;2019-12-10;S
+3;30-41895456-9;LA GLORIOSA S.A.;Brandsen 857;Formosa;Formosa;P3600;1121419768;pagos@lagloriosa.com;;RI;2019-11-20;N

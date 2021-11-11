@@ -1,0 +1,24 @@
+1;CABA;Av. Medrano 64;CABA;Almagro;1634
+2;Catamarca;Ayacucho 372;Catamarca;Catamarca (San Fernando del Valle de Catamarca);K4700
+3;Chaco;C. Obligado 598;Chaco;Resistencia;H3500
+4;Chubut;Av. 25 de Mayo 261;Chubut;Rawson;U9103
+5;Córdoba;Gral. Alvear 15;Córdoba;Córdoba;X5000
+6;Corrientes;Resoagli 2130;Corrientes;Corrientes;W3402
+7;Entre Ríos;Av. Francisco Ramírez 2882;Entre Ríos;Paraná;E3100
+8;Formosa;Av. Pantaleón Gómez 174;Formosa;Formosa;P3600
+9;Jujuy;Gral. San Martín 1171;Jujuy;San Salvador de Jujuy (Est. Jujuy);Y4600
+10;La Pampa;Av. Belgrano Nte. 400;La Pampa;Santa Rosa;L6300
+11;La Rioja;Justo José de Urquiza 248;La Rioja;La Rioja;F5300
+12;Mendoza;Avenida Juan B. Justo 474;Mendoza;Mendoza;M5500
+13;Misiones;Av. Martín Fierro 3807;Misiones;Posadas;N3300
+14;Neuquén;Sarmiento 683;Neuquén;Neuquén;Q8300
+15;Rio Negro;J. M. Guido 662;Río Negro;Viedma;R8500
+16;Salta;Leguizamón 1476;Salta;Salta;A4400
+17;San Juan;C. San Luis Oeste 256;San Juan;San Juan;J5400
+18;San Luis;Lavalle 402;San Luis;San Luis;D5700
+19;Santa Cruz;Luis Pasteur 810;Santa Cruz;Río Gallegos;Z9400
+20;Santa Fe;Av. Francia 2249;Santa Fe;Rosario;S2000
+21;Santiago del Estero;Garibaldi 275;Santiago del Estero;Santiago del Estero;G4200
+22;Tierra del Fuego;25 de Mayo 160;Tierra del Fuego;Ushuaia;V9410
+23;Tucumán;Lucas Cordoba 841;Tucumán;San Miguel de Tucumán (Est. Tucumán);T4000
+24;Buenos Aires;C. 50 825;Tucumán;La Plata;B1900
