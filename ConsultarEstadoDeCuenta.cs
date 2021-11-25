@@ -24,7 +24,7 @@ namespace Encomiendas
             }
 
             //lleno_data_grid_facturacion_paga();
-            //lleno_data_grid_facturacion_impaga();
+            //lleno_data_grid_facturacion_impaga();f
             //lleno_data_grid_servicios_cumplidos();
             //lleno_data_grid_servicios_pdtes_de_facturar();
             formato_grid(dataGridView_facturacion_impaga);
@@ -159,7 +159,7 @@ namespace Encomiendas
                 {
                     dr.Cells[4].Value = servicio_pdte_facturar.direccionDestino;
                 }
-
+                //ssa
 
                 dr.Cells[5].Value = servicio_pdte_facturar.localidad;
                 dr.Cells[6].Value = servicio_pdte_facturar.provincia;
