@@ -20,7 +20,8 @@ namespace Encomiendas
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
 
-            MenuVertical.BackColor = System.Drawing.ColorTranslator.FromHtml("#EFE1DE");
+          
+             MenuVertical.BackColor = System.Drawing.ColorTranslator.FromHtml("#EFE1DE");
             treeView1.BackColor = System.Drawing.ColorTranslator.FromHtml("#EFE1DE");
             panelContenedor.BackColor = System.Drawing.ColorTranslator.FromHtml("#EFE1DE");
 
@@ -29,6 +30,8 @@ namespace Encomiendas
             Login login = new Login();
             login.ShowDialog();
         }
+
+ 
 
         private void GenerarMenu() {
             

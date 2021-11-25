@@ -1,0 +1,24 @@
+Porcentaje Urgencia;20
+Tope Urgencia;50
+Fijo Retiro En Puerta;20
+Fijo Entrega En Puerta;20
+Sobres Internacional; 40
+Bultos Internacional <=10; 50
+Bultos Internacional >10<=20; 400
+Bultos Internacional >20<=30; 4000
+Sobres Nacional = Localidad;10
+Sobres Nacional <> Localidad;20
+Sobres Nacional = Region;30
+Sobres Nacional <> Region;40
+Bultos Nacional <=10 = Localidad;10
+Bultos Nacional <=10 <> Localidad;15
+Bultos Nacional <=10 = Region;20
+Bultos Nacional <=10 <> Region;30
+Bultos Nacional >10<=20 = Localidad;35
+Bultos Nacional >10<=20 <> Localidad;40
+Bultos Nacional >10<=20 = Region;60
+Bultos Nacional >10<=20 <> Region;70
+Bultos Nacional >20<=30 = Localidad;75
+Bultos Nacional >20<=30 <> Localidad;80
+Bultos Nacional >20<=30 = Region;85
+Bultos Nacional >20<=30 <> Region;95

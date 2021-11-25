@@ -119,7 +119,17 @@ namespace Encomiendas
                 dr.Cells[5].Value = servicio_cumplido.localidad;
                 dr.Cells[6].Value = servicio_cumplido.provincia;
                 dr.Cells[7].Value = servicio_cumplido.internacional;
-                dr.Cells[8].Value = servicio_cumplido.regionInternacional;
+                
+                if (servicio_cumplido.internacional.Equals("no"))
+                {
+                    dr.Cells[8].Value = "N/A";
+                }
+                else
+                {
+                    dr.Cells[8].Value = servicio_cumplido.regionInternacional;
+                }
+
+
 
                 dataGridView_servicios_cumplidos.Rows.Add(dr);
             }
@@ -155,6 +165,16 @@ namespace Encomiendas
                 dr.Cells[6].Value = servicio_pdte_facturar.provincia;
                 dr.Cells[7].Value = servicio_pdte_facturar.internacional;
                 dr.Cells[8].Value = servicio_pdte_facturar.regionInternacional;
+
+                if (servicio_pdte_facturar.internacional.Equals("no"))
+                {
+                    dr.Cells[8].Value = "N/A";
+                }
+                else
+                {
+                    dr.Cells[8].Value = servicio_pdte_facturar.regionInternacional;
+                }
+
 
                 dataGridView_servicios_pdtes_de_facturacion.Rows.Add(dr);
             }

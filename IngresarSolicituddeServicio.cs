@@ -21,7 +21,41 @@ namespace Encomiendas
         string ruta_archivo_usuarios = "../../datos/ClienteCorporativo.txt";
         string ruta_archivo_sucursales = "../../datos/Sucursales.txt";
         string ruta_archivo_tarifas_localidades = "../../datos/TarifasLocalidades.txt";
+        string ruta_archivo_tarifario = @"../../datos/Tarifario.txt";
+
+        decimal gral_porcentaje_urgencia = 0;
+        decimal gral_tope_urgencia = 0;
+        decimal gral_fijo_retiro_en_puerta = 0;
+        decimal gral_fijo_entrega_en_puerta = 0;
+       
+        decimal gral_sobres_internacional = 0;
         
+        decimal gral_bultos_internacional_menorigual10 = 0;
+        decimal gral_bultos_internacional_mayor10menorigual20 = 0;
+        decimal gral_bultos_internacional_mayor20menorigual30 = 0;
+        
+        decimal gral_sobres_nacional_igual_localidad = 0;
+        decimal gral_sobres_nacional_distinto_localidad = 0;
+        decimal gral_sobres_nacional_igual_region = 0;
+        decimal gral_sobres_nacional_distinto_region = 0;
+        
+        decimal gral_bultos_nacional_menorigual10_igual_localidad = 0;
+        decimal gral_bultos_nacional_menorigual10_distinto_localidad = 0;
+        decimal gral_bultos_nacional_menorigual10_igual_region = 0;
+        decimal gral_bultos_nacional_menorigual10_distinto_region = 0;
+        
+        decimal gral_bultos_nacional_mayor10menorigual20_igual_localidad = 0;
+        decimal gral_bultos_nacional_mayor10menorigual20_distinto_localidad = 0;
+        decimal gral_bultos_nacional_mayor10menorigual20_igual_region = 0;
+        decimal gral_bultos_nacional_mayor10menorigual20_distinto_region = 0;
+        
+        decimal gral_bultos_nacional_mayor20menorigual30_igual_localidad = 0;
+        decimal gral_bultos_nacional_mayor20menorigual30_distinto_localidad = 0;
+        decimal gral_bultos_nacional_mayor20menorigual30_igual_region = 0;
+        decimal gral_bultos_nacional_mayor20menorigual30_distinto_region = 0;
+
+
+       
 
         private void IngresarSolicituddeServicio_Load(object sender, EventArgs e)
         {
@@ -39,6 +73,7 @@ namespace Encomiendas
             cargo_combos();
             lleno_data_grid();
             formato_grid();
+            BuscarPrecios();
 
             groupBox_internacional.Visible = false;
             groupBox_internacional.Enabled = false;
@@ -684,12 +719,15 @@ namespace Encomiendas
 
         private decimal traer_gravado(string tipo, decimal peso) 
         {
+
+
+            
             decimal gravado = 0;
             decimal porc_urgencia = (decimal)1;
-            decimal tope_urgencia = (decimal)50;
+            decimal tope_urgencia = (decimal)gral_tope_urgencia;
             decimal monto_urgencia = (decimal)0;
             decimal fijo_retiro_en_puerta = (decimal)0;
-            decimal fijo_entrega_en_puerta = (decimal)20;
+            decimal fijo_entrega_en_puerta = (decimal)gral_fijo_entrega_en_puerta;
             decimal internacional = (decimal)0;
 
             string provincia_cliente = textBox_provincia.Text;
@@ -700,7 +738,7 @@ namespace Encomiendas
             string localidad_receptor = comboBox_localidad.Text;
             string region_receptor = textBox_region.Text;
 
-
+            
             if (checkBox_internacional.Checked)
             {
                 provincia_receptor = "CABA";
@@ -709,7 +747,7 @@ namespace Encomiendas
                 {
                     case "Sobres":
 
-                        internacional = 40;
+                        internacional = gral_sobres_internacional;
                       
                         break;
                     case "Bultos":
@@ -717,12 +755,12 @@ namespace Encomiendas
 
                         if (peso <= 10)
                         {
-                            internacional = 50;                                
+                            internacional = gral_bultos_internacional_menorigual10;                                
                         }
 
                         if (peso > 10 && peso <= 20)
                         {
-                            internacional = 400;
+                            internacional = gral_bultos_internacional_mayor10menorigual20;
                                                        
                         }
 
@@ -730,7 +768,7 @@ namespace Encomiendas
                         {
 
 
-                            internacional = 4000;
+                            internacional = gral_bultos_internacional_mayor20menorigual30;
                                 
                         }
 
@@ -746,12 +784,12 @@ namespace Encomiendas
 
             if (checkBox_retiro_en_puerta.Checked)
             {
-                fijo_retiro_en_puerta = (decimal)20;
+                fijo_retiro_en_puerta = (decimal)gral_fijo_retiro_en_puerta;
             }
 
             if (radioButton_urgencia_urgente.Checked)                 
             {
-                porc_urgencia = (decimal)1.2;
+                porc_urgencia = (decimal)gral_porcentaje_urgencia;
             }
 
             switch (tipo)
@@ -761,23 +799,26 @@ namespace Encomiendas
                     { 
                         if (localidad_cliente.Equals(localidad_receptor))
                         {
-                            gravado = 10;
+                            gravado = gral_sobres_nacional_igual_localidad;
                         } else
                         {
-                            gravado = 20;
+                            gravado = gral_sobres_nacional_distinto_localidad;
                         }
 
                     } else
                     {
                         if (region_cliente.Equals(region_receptor))
                         {
-                            gravado = 30;
+                            gravado = gral_sobres_nacional_igual_region;
                         }
                         else
                         {
-                            gravado = 40;
+                            gravado = gral_sobres_nacional_distinto_region;
                         }
                     }
+
+                    
+
                     break;
                 case "Bultos":
 
@@ -787,11 +828,11 @@ namespace Encomiendas
                         {
                             if (localidad_cliente.Equals(localidad_receptor))
                             {
-                                gravado = 10;
+                                gravado = gral_bultos_nacional_menorigual10_igual_localidad;
                             }
                             else
                             {
-                                gravado = 15;
+                                gravado = gral_bultos_nacional_menorigual10_distinto_localidad;
                             }
 
                         }
@@ -799,11 +840,11 @@ namespace Encomiendas
                         {
                             if (region_cliente.Equals(region_receptor))
                             {
-                                gravado = 20;
+                                gravado = gral_bultos_nacional_menorigual10_igual_region;
                             }
                             else
                             {
-                                gravado = 30;
+                                gravado = gral_bultos_nacional_menorigual10_distinto_region;
                             }
                         }
                     }
@@ -814,11 +855,11 @@ namespace Encomiendas
                         {
                             if (localidad_cliente.Equals(localidad_receptor))
                             {
-                                gravado = 35;
+                                gravado = gral_bultos_nacional_mayor10menorigual20_igual_localidad;
                             }
                             else
                             {
-                                gravado = 40;
+                                gravado = gral_bultos_nacional_mayor10menorigual20_distinto_localidad;
                             }
 
                         }
@@ -826,11 +867,11 @@ namespace Encomiendas
                         {
                             if (region_cliente.Equals(region_receptor))
                             {
-                                gravado = 60;
+                                gravado = gral_bultos_nacional_mayor10menorigual20_igual_region;
                             }
                             else
                             {
-                                gravado = 70;
+                                gravado = gral_bultos_nacional_mayor10menorigual20_distinto_region;
                             }
                         }
                     }
@@ -841,11 +882,11 @@ namespace Encomiendas
                         {
                             if (localidad_cliente.Equals(localidad_receptor))
                             {
-                                gravado = 75;
+                                gravado = gral_bultos_nacional_mayor20menorigual30_igual_localidad;
                             }
                             else
                             {
-                                gravado = 80;
+                                gravado = gral_bultos_nacional_mayor20menorigual30_distinto_localidad;
                             }
 
                         }
@@ -853,34 +894,46 @@ namespace Encomiendas
                         {
                             if (region_cliente.Equals(region_receptor))
                             {
-                                gravado = 85;
+                                gravado = gral_bultos_nacional_mayor20menorigual30_igual_region;
                             }
                             else
                             {
-                                gravado = 95;
+                                gravado = gral_bultos_nacional_mayor20menorigual30_distinto_region;
                             }
                         }
                     }
 
-
+                    
 
                     break;
             }
 
-
-            gravado += fijo_entrega_en_puerta + fijo_retiro_en_puerta + internacional;
             
-            monto_urgencia = (decimal)gravado * (decimal)porc_urgencia;
+            gravado += fijo_entrega_en_puerta + fijo_retiro_en_puerta + internacional;
+            //MessageBox.Show(gravado.ToString());
 
-            if (monto_urgencia > tope_urgencia)
+
+
+            monto_urgencia = ((decimal)gravado * (decimal)porc_urgencia)-(decimal)gravado;
+            //MessageBox.Show(monto_urgencia.ToString());
+
+            if (radioButton_urgencia_urgente.Checked) 
             {
-                gravado = (decimal)gravado + (decimal)tope_urgencia;
-            } else
-            {
-                gravado = (decimal)gravado + (decimal)monto_urgencia;
+                if (monto_urgencia > tope_urgencia)
+                {
+                    gravado = (decimal)gravado + (decimal)tope_urgencia;
+                }
+                else
+                {
+                    gravado = (decimal)gravado + (decimal)monto_urgencia;
+                }
             }
 
-                       
+
+            
+
+            //MessageBox.Show(gravado.ToString());
+
 
 
             if (peso == 0 ) { gravado = 0; };
@@ -888,6 +941,231 @@ namespace Encomiendas
             return gravado;
 
         }
+
+        //private decimal traer_gravado(string tipo, decimal peso)
+        //{
+        //    decimal gravado = 0;
+        //    decimal porc_urgencia = (decimal)1;
+        //    decimal tope_urgencia = (decimal)50;
+        //    decimal monto_urgencia = (decimal)0;
+        //    decimal fijo_retiro_en_puerta = (decimal)0;
+        //    decimal fijo_entrega_en_puerta = (decimal)20;
+        //    decimal internacional = (decimal)0;
+
+        //    string provincia_cliente = textBox_provincia.Text;
+        //    string localidad_cliente = textBox_localidad.Text;
+        //    string region_cliente = textBox_region_cliente.Text;
+
+        //    string provincia_receptor = comboBox_provincia.Text;
+        //    string localidad_receptor = comboBox_localidad.Text;
+        //    string region_receptor = textBox_region.Text;
+
+
+        //    if (checkBox_internacional.Checked)
+        //    {
+        //        provincia_receptor = "CABA";
+
+        //        switch (tipo)
+        //        {
+        //            case "Sobres":
+
+        //                internacional = 40;
+
+        //                break;
+        //            case "Bultos":
+
+
+        //                if (peso <= 10)
+        //                {
+        //                    internacional = 50;
+        //                }
+
+        //                if (peso > 10 && peso <= 20)
+        //                {
+        //                    internacional = 400;
+
+        //                }
+
+        //                if (peso > 20 && peso <= 30)
+        //                {
+
+
+        //                    internacional = 4000;
+
+        //                }
+
+        //                break;
+        //        }
+
+        //    }
+
+        //    if (checkBox_retiro_en_sucursal.Checked)
+        //    {
+        //        fijo_entrega_en_puerta = (decimal)0;
+        //    }
+
+        //    if (checkBox_retiro_en_puerta.Checked)
+        //    {
+        //        fijo_retiro_en_puerta = (decimal)20;
+        //    }
+
+        //    if (radioButton_urgencia_urgente.Checked)
+        //    {
+        //        porc_urgencia = (decimal)1.2;
+        //    }
+
+        //    switch (tipo)
+        //    {
+        //        case "Sobres":
+        //            if (provincia_cliente.Equals(provincia_receptor))
+        //            {
+        //                if (localidad_cliente.Equals(localidad_receptor))
+        //                {
+        //                    gravado = 10;
+        //                }
+        //                else
+        //                {
+        //                    gravado = 20;
+        //                }
+
+        //            }
+        //            else
+        //            {
+        //                if (region_cliente.Equals(region_receptor))
+        //                {
+        //                    gravado = 30;
+        //                }
+        //                else
+        //                {
+        //                    gravado = 40;
+        //                }
+        //            }
+
+
+
+        //            break;
+        //        case "Bultos":
+
+
+        //            if (peso <= 10)
+        //            {
+        //                if (provincia_cliente.Equals(provincia_receptor))
+        //                {
+        //                    if (localidad_cliente.Equals(localidad_receptor))
+        //                    {
+        //                        gravado = 10;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 15;
+        //                    }
+
+        //                }
+        //                else
+        //                {
+        //                    if (region_cliente.Equals(region_receptor))
+        //                    {
+        //                        gravado = 20;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 30;
+        //                    }
+        //                }
+        //            }
+
+        //            if (peso > 10 && peso <= 20)
+        //            {
+        //                if (provincia_cliente.Equals(provincia_receptor))
+        //                {
+        //                    if (localidad_cliente.Equals(localidad_receptor))
+        //                    {
+        //                        gravado = 35;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 40;
+        //                    }
+
+        //                }
+        //                else
+        //                {
+        //                    if (region_cliente.Equals(region_receptor))
+        //                    {
+        //                        gravado = 60;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 70;
+        //                    }
+        //                }
+        //            }
+
+        //            if (peso > 20 && peso <= 30)
+        //            {
+        //                if (provincia_cliente.Equals(provincia_receptor))
+        //                {
+        //                    if (localidad_cliente.Equals(localidad_receptor))
+        //                    {
+        //                        gravado = 75;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 80;
+        //                    }
+
+        //                }
+        //                else
+        //                {
+        //                    if (region_cliente.Equals(region_receptor))
+        //                    {
+        //                        gravado = 85;
+        //                    }
+        //                    else
+        //                    {
+        //                        gravado = 95;
+        //                    }
+        //                }
+        //            }
+
+
+
+        //            break;
+        //    }
+
+
+        //    gravado += fijo_entrega_en_puerta + fijo_retiro_en_puerta + internacional;
+        //    //MessageBox.Show(gravado.ToString());
+
+
+
+        //    monto_urgencia = ((decimal)gravado * (decimal)porc_urgencia) - (decimal)gravado;
+        //    //MessageBox.Show(monto_urgencia.ToString());
+
+        //    if (radioButton_urgencia_urgente.Checked)
+        //    {
+        //        if (monto_urgencia > tope_urgencia)
+        //        {
+        //            gravado = (decimal)gravado + (decimal)tope_urgencia;
+        //        }
+        //        else
+        //        {
+        //            gravado = (decimal)gravado + (decimal)monto_urgencia;
+        //        }
+        //    }
+
+
+
+
+        //    //MessageBox.Show(gravado.ToString());
+
+
+
+        //    if (peso == 0) { gravado = 0; };
+
+        //    return gravado;
+
+        //}
 
         private void groupBox_datos_del_cliente_Enter(object sender, EventArgs e)
         {
@@ -935,7 +1213,7 @@ namespace Encomiendas
                 comboBox_sucursal_destino.SelectedIndex = 0;
                 comboBox_sucursal_destino.Enabled = false;
 
-                calcular_precio();
+                
 
             } else
             {
@@ -945,7 +1223,12 @@ namespace Encomiendas
                 groupBox_internacional.Enabled = false;
                 comboBox_sucursal_destino.SelectedIndex = -1;
                 comboBox_sucursal_destino.Enabled = true;
+
+                
             }
+
+            calcular_precio();
+
         }
 
         private void radioButton_urgencia_urgente_CheckedChanged(object sender, EventArgs e)
@@ -1055,6 +1338,103 @@ namespace Encomiendas
                 e.Handled = true;
             }
 
+        }
+
+        private void BuscarPrecios()
+        {
+            var stream = File.OpenRead(ruta_archivo_tarifario);
+            var reader = new StreamReader(stream);
+
+
+            if (new FileInfo(ruta_archivo_tarifario).Length != 0)
+            {
+                while (!reader.EndOfStream)
+                {
+                    var linea = reader.ReadLine();
+
+                    string[] valores = linea.Split(';');
+                    decimal valor = Decimal.Parse(valores[1]);
+                    
+                    switch (valores[0])
+                    {
+                        case "Porcentaje Urgencia":
+                            gral_porcentaje_urgencia = (valor/100) + 1;                            
+                            break;
+                        case "Tope Urgencia":
+                            gral_tope_urgencia = valor;
+                            break;
+                        case "Fijo Retiro En Puerta":
+                            gral_fijo_retiro_en_puerta = valor;
+                            break;
+                        case "Fijo Entrega En Puerta":
+                            gral_fijo_entrega_en_puerta = valor;
+                            break;
+                        case "Sobres Internacional":
+                            gral_sobres_internacional = valor;                            
+                            break;
+                        case "Bultos Internacional <=10":
+                            gral_bultos_internacional_menorigual10 = valor;
+                            break;
+                        case "Bultos Internacional >10<=20":
+                            gral_bultos_internacional_mayor10menorigual20 = valor;
+                            break;
+                        case "Bultos Internacional >20<=30":
+                            gral_bultos_internacional_mayor20menorigual30 = valor;
+                            break;
+                        case "Sobres Nacional = Localidad":
+                            gral_sobres_nacional_igual_localidad = valor;
+                            break;
+                        case "Sobres Nacional <> Localidad":
+                            gral_sobres_nacional_distinto_localidad = valor;
+                            break;
+                        case "Sobres Nacional = Region":
+                            gral_sobres_nacional_igual_region = valor;
+                            break;
+                        case "Sobres Nacional <> Region":
+                            gral_sobres_nacional_distinto_region = valor;
+                            break;
+                        case "Bultos Nacional <=10 = Localidad":
+                            gral_bultos_nacional_menorigual10_igual_localidad = valor;
+                            break;
+                        case "Bultos Nacional <=10 <> Localidad":
+                            gral_bultos_nacional_menorigual10_distinto_localidad = valor;
+                            break;
+                        case "Bultos Nacional <=10 = Region":
+                            gral_bultos_nacional_menorigual10_igual_region = valor;
+                            break;
+                        case "Bultos Nacional <=10 <> Region":
+                            gral_bultos_nacional_menorigual10_distinto_region = valor;
+                            break;
+                        case "Bultos Nacional >10<=20 = Localidad":
+                            gral_bultos_nacional_mayor10menorigual20_igual_localidad = valor;
+                            break;
+                        case "Bultos Nacional >10<=20 <> Localidad":
+                            gral_bultos_nacional_mayor10menorigual20_distinto_localidad = valor;
+                            break;
+                        case "Bultos Nacional >10<=20 = Region":
+                            gral_bultos_nacional_mayor10menorigual20_igual_region = valor;
+                            break;
+                        case "Bultos Nacional >10<=20 <> Region":
+                            gral_bultos_nacional_mayor10menorigual20_distinto_region = valor;
+                            break;
+                        case "Bultos Nacional >20<=30 = Localidad":
+                            gral_bultos_nacional_mayor20menorigual30_igual_localidad = valor;
+                            break;
+                        case "Bultos Nacional >20<=30 <> Localidad":
+                            gral_bultos_nacional_mayor20menorigual30_distinto_localidad = valor;
+                            break;
+                        case "Bultos Nacional >20<=30 = Region":
+                            gral_bultos_nacional_mayor20menorigual30_igual_region = valor;
+                            break;
+                        case "Bultos Nacional >20<=30 <> Region":
+                            gral_bultos_nacional_mayor20menorigual30_distinto_region = valor;
+                            break;
+
+                    }
+                }
+            }
+
+            stream.Close();
         }
 
 

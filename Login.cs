@@ -18,10 +18,14 @@ namespace Encomiendas
             InitializeComponent();
         }
 
+        int bandera_cerrar = 0;
         string ruta_archivo_usuarios = "../../datos/usuarios.txt";
 
         private void Login_Load(object sender, EventArgs e)
         {
+
+            this.FormBorderStyle = FormBorderStyle.None;
+
             if (!File.Exists(ruta_archivo_usuarios)) 
             {                               
                 MessageBox.Show("Falta el Archivo de Usuarios, por favor genere el archivo y lanze la aplicación nuevamnete");
@@ -66,6 +70,7 @@ namespace Encomiendas
                 //MenuPrincipal form = new MenuPrincipal();
 
                 //form.Show();
+                bandera_cerrar = 1;
                 this.Close();
                 
                 //this.Close();
@@ -80,8 +85,15 @@ namespace Encomiendas
         }
 
 
-       
-             
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (bandera_cerrar == 0) { e.Cancel = true; }
+
+
+            
+        }
 
 
         private void TextBox_nombre_usuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,6 +123,9 @@ namespace Encomiendas
 
         private void Button_salir_Click(object sender, EventArgs e)
         {
+            bandera_cerrar = 1;
+
+
             Application.Exit();
         }
 

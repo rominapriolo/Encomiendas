@@ -10,3 +10,4 @@
 10;3;dasfsdf;sdf148;sdfsdf;sdfsdf;no;1;CABA;Agronomía;1425;M;29/10/2021 20:05:27;Correspondencia;Normal;Recibida;60;0;12,60;72,60;no;no;;
 11;1;romineitor;111;correo;direccion;no;4;Tierra del Fuego;Tolhuin;1425;S;29/10/2021 20:44:22;Correspondencia;Normal;Recibida;60;0;12,60;72,60;no;no;;
 12;2;razon social;11414764582;correo@gmail.com;direccion;no;3;San Luis;Villa Reynolds;4787;C;09/11/2021 0:00:00;Correspondencia;Urgente;Recibida;130;0;27,30;157,30;si;no;;
+13;1;asdf;2;asfas;;si;3;;;;;11/11/2021 11:41:04;Correspondencia;Normal;Recibida;0;20;0;20;no;no;;
